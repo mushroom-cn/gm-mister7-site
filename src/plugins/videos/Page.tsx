@@ -1,8 +1,8 @@
-import { Col, Row, Slider } from "antd";
-import React, { useState } from "react";
+import { Col, Row } from "antd";
+import Search from "antd/es/input/Search";
+import React from "react";
 import { useGrid } from "../../device";
 import { VideoCard } from "./VideoCard";
-import Search from "antd/es/input/Search";
 
 export const VideoPage: React.FC = () => {
   const [colCount, horizontal, vertical] = useGrid();
