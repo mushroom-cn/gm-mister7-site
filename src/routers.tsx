@@ -1,7 +1,9 @@
 import React from "react";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, Observable, distinctUntilChanged } from "rxjs";
 const routers$ = new BehaviorSubject<IEntryRouter[]>([]);
-export const entryRouter$: Observable<IEntryRouter[]> = routers$;
+export const entryRouter$: Observable<IEntryRouter[]> = routers$.pipe(
+  distinctUntilChanged()
+);
 
 export const addEntryRouter = (routers: IEntryRouter[] | IEntryRouter) => {
   const { value } = routers$;
@@ -17,6 +19,7 @@ export const removeEntryRouter = (path: string) => {
 };
 export type IEntryRouter = {
   path: string;
+  isDefault: boolean;
   label?: React.ReactNode;
   icon?: React.ReactNode;
   component: React.FC;

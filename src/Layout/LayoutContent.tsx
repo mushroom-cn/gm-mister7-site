@@ -18,6 +18,7 @@ export const LayoutContent: FC = () => {
         style={{
           padding: 24,
           background: colorBgContainer,
+          height: "100%",
         }}
       >
         <Routes>

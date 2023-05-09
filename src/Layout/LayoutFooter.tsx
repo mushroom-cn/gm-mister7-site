@@ -10,7 +10,7 @@ import {
 } from "@ant-design/icons";
 import { Layout as ALayout, MenuProps, theme } from "antd";
 import { FC, createElement } from "react";
-
+import { useTranslation } from "react-i18next";
 const { Header, Content, Footer, Sider } = ALayout;
 
 const items: MenuProps["items"] = [
@@ -32,10 +32,10 @@ export const LayoutFooter: FC = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-
+  const { t } = useTranslation();
   return (
     <Footer style={{ textAlign: "center" }}>
-      Ant Design ©2023 Created by Ant UED
+      {t("©2023 Created by GMM7")}
     </Footer>
   );
 };

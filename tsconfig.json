@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
     "module": "CommonJS",
@@ -8,11 +9,17 @@
     "sourceMap": true,
     "sourceRoot": "dist",
     "jsx": "react-jsx",
-    "strict": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "outDir": "dist"
+    "rootDir": ".",
+    "outDir": "dist",
+    "paths": {
+        "@common": ["src/common"],
+        "@common/*": ["src/common/*"],
+        "@plugins": ["src/plugins"],
+        "@plugins/*": ["src/plugins/*"],
+    }
   },
   "include": ["src", "types"],
   "exclude": [".eslintrc.js", "webpack.config.js"]

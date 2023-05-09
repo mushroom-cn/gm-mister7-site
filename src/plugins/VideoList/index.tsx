@@ -1,5 +1,5 @@
 import { addEntryRouter } from "../../routers";
-import { VideoPage } from "./Page";
+import { VideoList } from "./VideoList";
 import { VideoCameraOutlined } from "@ant-design/icons";
 
 const routerPath = {
@@ -9,9 +9,10 @@ const routerPath = {
 addEntryRouter([
   {
     path: routerPath.video,
+    isDefault: true,
     label: "视频",
     icon: <VideoCameraOutlined />,
-    component: VideoPage,
+    component: VideoList,
     children: [],
   },
 ]);

@@ -35,9 +35,9 @@ const items: MenuProps["items"] = [
 
 export const Layout: FC = () => {
   return (
-    <ALayout hasSider>
+    <ALayout hasSider style={{ height: "100%" }}>
       <LayoutSider />
-      <ALayout className="site-layout" style={{ marginLeft: 200 }}>
+      <ALayout className="site-layout">
         <LayoutHeader />
         <LayoutContent />
         <LayoutFooter />

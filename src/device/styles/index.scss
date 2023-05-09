@@ -1,0 +1,41 @@
+$_desktop: 1025;
+$_tablet: 1024;
+$_note: 960;
+$_mobile: 820;
+
+$_desktop_media_query: "min-width: 1025px";
+$_tablet_media_query: "max-width: 1024px";
+$_note_media_query: "max-width: 960px";
+$_mobile_media_query: "max-width: 768px";
+
+:export {
+    desktop: $_desktop;
+    tablet: $_tablet;
+    note: $_note;
+    mobile: $_mobile;
+    desktopMediaQuery: $_desktop_media_query;
+    tabletMediaQuery: $_tablet_media_query;
+    noteMediaQuery: $_note_media_query;
+    mobileMediaQuery: $_mobile_media_query;
+}
+@media (min-width: 1025px) { 
+    #root {
+        background-color: rgb(46, 41, 41);
+    }
+ }
+@media (max-width: 1024px) { 
+    #root {
+        background-color: rgb(37, 207, 66);
+    }
+ }
+@media (max-width: 920px) { 
+    #root {
+        background-color: red;
+    }
+ }
+
+ @media (max-width: 768px) { 
+    #root {
+        background-color: gold;
+    }
+ }
