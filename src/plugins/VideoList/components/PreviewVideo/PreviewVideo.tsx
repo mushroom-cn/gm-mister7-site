@@ -15,7 +15,6 @@ export enum PreviewMode {
   Gallery,
   Video,
 }
-
 export function PreviewVideo({
   width = 300,
   height = 150,

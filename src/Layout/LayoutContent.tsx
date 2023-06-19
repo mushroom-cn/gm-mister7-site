@@ -22,8 +22,15 @@ export const LayoutContent: FC = () => {
         }}
       >
         <Routes>
-          {routers.map(({ path, component }) => {
-            return <Route key={path} path={path} Component={component} />;
+          {routers.map(({ path, component, isDefault }) => {
+            return (
+              <Route
+                key={path}
+                path={path}
+                Component={component}
+                index={isDefault}
+              />
+            );
           })}
         </Routes>
       </div>

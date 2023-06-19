@@ -1,15 +1,17 @@
-import { Button, Col, Result, Row, Skeleton } from "antd";
+import { ResourceNotFound } from "@common/compopnents";
+import { EventBusContext } from "@common/global";
+import { Col, Row, Skeleton } from "antd";
 import Search from "antd/es/input/Search";
 import React, { useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useAsyncRetry, useSetState } from "react-use";
 import { useGrid } from "../../device";
 import { VideoCard } from "./VideoCard";
-import styles from "./styles/index.scss";
 import { api, formatMedia } from "./api";
-import { timer } from "rxjs";
-import { EventBusContext } from "@common/global";
-import { ResourceNotFound } from "@common/compopnents";
+import styles from "./styles/index.scss";
+import { SettingOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
+import { useTitle } from "@common";
 const GRID_SIZE = 24;
 
 export const VideoList: React.FC = () => {
@@ -22,6 +24,7 @@ export const VideoList: React.FC = () => {
     canRetry: true,
   });
   const { t } = useTranslation();
+  useTitle(t("视频列表"));
   const {
     value = [],
     loading,
@@ -51,9 +54,9 @@ export const VideoList: React.FC = () => {
   if (loading) {
     return <Skeleton active />;
   }
-  if (!cols.length) {
-    return <ResourceNotFound title={"资源未找到"} retry={retry} />;
-  }
+  //   if (!cols.length) {
+  //     return <ResourceNotFound title={"资源未找到"} retry={retry} />;
+  //   }
   return (
     <>
       <Search
@@ -68,6 +71,9 @@ export const VideoList: React.FC = () => {
           setState({ search: value });
         }}
       />
+      <Link to={"/video/settings"}>
+        <SettingOutlined />
+      </Link>
       <Row gutter={[vertical, horizontal]}>{cols}</Row>
     </>
   );

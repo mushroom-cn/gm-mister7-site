@@ -21,6 +21,7 @@ const config = {
         clean: {
             dry: false, // Log the assets that should be removed instead of deleting them.
         },
+        publicPath: "/",
     },
     devServer: {
         open: true,

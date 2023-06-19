@@ -4,16 +4,19 @@ import type Player from "video.js/dist/types/player";
 import "videojs-contrib-quality-levels";
 import "videojs-hls-quality-selector";
 import "videojs-contrib-hls";
+import { useLocalStorage } from "react-use";
 
 type PreviewVideoProps = {
   options: any;
   onReady: (p: Player) => void;
 };
+const volumeCacheKey = "Volume";
 
 export const VideoJS = ({ options, onReady }: PreviewVideoProps) => {
   const videoRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<Player | null>(null);
   const { type, ...optRest } = options;
+  const [volume, setVolume] = useLocalStorage(volumeCacheKey, 0);
   useEffect(() => {
     if (!playerRef.current) {
       const videoElement = document.createElement("video-js");
@@ -40,12 +43,16 @@ export const VideoJS = ({ options, onReady }: PreviewVideoProps) => {
       const player = playerRef.current;
       player.width(optRest.width);
       player.height(optRest.height);
+      player.volume(+volume);
       player.src({
         src: optRest.src,
         type,
       });
       (player as Player & { hlsQualitySelector: any }).hlsQualitySelector?.({
         displayCurrentQuality: true,
+      });
+      player.on("volumechange", (v: any) => {
+        setVolume(player.volume());
       });
     }
   }, [options, videoRef]);

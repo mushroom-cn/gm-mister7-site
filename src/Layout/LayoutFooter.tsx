@@ -11,7 +11,7 @@ import {
 import { Layout as ALayout, MenuProps, theme } from "antd";
 import { FC, createElement } from "react";
 import { useTranslation } from "react-i18next";
-const { Header, Content, Footer, Sider } = ALayout;
+const { Footer } = ALayout;
 
 const items: MenuProps["items"] = [
   UserOutlined,

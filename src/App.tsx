@@ -1,7 +1,7 @@
 import { EventBusContext } from "@common/global";
 import EventEmitter from "events";
 import { memo, useMemo } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes } from "react-router-dom";
 import { Layout } from "./Layout";
 import "./common";
 import "./i18n";

@@ -84,6 +84,7 @@ export interface MediaDto {
   modifyDate: string;
   /** @format YYYY-MM-DDTHH:mm:ss.sssZ */
   deleteDate: string | null;
+  status: "loading" | "done";
   actors?: ActorDto[];
   tags?: TagDto[];
 }

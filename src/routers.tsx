@@ -19,9 +19,10 @@ export const removeEntryRouter = (path: string) => {
 };
 export type IEntryRouter = {
   path: string;
-  isDefault: boolean;
+  isDefault?: boolean;
   label?: React.ReactNode;
   icon?: React.ReactNode;
   component: React.FC;
   children?: IEntryRouter[];
+  isHideInMenu?: boolean;
 };

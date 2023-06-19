@@ -10,9 +10,9 @@ import {
 } from "@ant-design/icons";
 import { Layout as ALayout, Breadcrumb, MenuProps, Space, theme } from "antd";
 import { FC, createElement } from "react";
-import { Link, useLocation, useSearchParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-const { Header, Content, Footer, Sider } = ALayout;
+const { Header } = ALayout;
 
 const items: MenuProps["items"] = [
   UserOutlined,
@@ -35,9 +35,11 @@ export const LayoutHeader: FC = () => {
   } = theme.useToken();
   const { pathname } = useLocation();
   const paths = [...pathname.split("/").filter(Boolean)];
+  let preifx: string[] = [""];
   const items = paths.map((path) => {
+    preifx.push(path);
     return {
-      title: <Link to={path}>{path}</Link>,
+      title: <Link to={preifx.join("/")}>{path}</Link>,
     };
   });
   return (
