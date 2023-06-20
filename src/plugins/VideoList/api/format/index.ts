@@ -1,1 +1,1 @@
-export * from "./formatMedia";
+export * from './formatMedia';

@@ -7,14 +7,14 @@ import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
-} from "@ant-design/icons";
-import { Layout as ALayout, Breadcrumb, MenuProps, Space, theme } from "antd";
-import { FC, createElement } from "react";
-import { Link, useLocation } from "react-router-dom";
+} from '@ant-design/icons';
+import { Layout as ALayout, Breadcrumb, MenuProps, Space, theme } from 'antd';
+import { FC, createElement } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const { Header } = ALayout;
 
-const items: MenuProps["items"] = [
+const items: MenuProps['items'] = [
   UserOutlined,
   VideoCameraOutlined,
   UploadOutlined,
@@ -34,17 +34,17 @@ export const LayoutHeader: FC = () => {
     token: { colorBgContainer },
   } = theme.useToken();
   const { pathname } = useLocation();
-  const paths = [...pathname.split("/").filter(Boolean)];
-  let preifx: string[] = [""];
+  const paths = [...pathname.split('/').filter(Boolean)];
+  let preifx: string[] = [''];
   const items = paths.map((path) => {
     preifx.push(path);
     return {
-      title: <Link to={preifx.join("/")}>{path}</Link>,
+      title: <Link to={{ pathname: preifx.join('/') }}>{path}</Link>,
     };
   });
   return (
     <Header style={{ background: colorBgContainer }}>
-      <Space size={"middle"}>
+      <Space size={'middle'}>
         <Breadcrumb separator=">" items={items} />
       </Space>
     </Header>

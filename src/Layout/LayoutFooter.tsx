@@ -7,13 +7,13 @@ import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
-} from "@ant-design/icons";
-import { Layout as ALayout, MenuProps, theme } from "antd";
-import { FC, createElement } from "react";
-import { useTranslation } from "react-i18next";
+} from '@ant-design/icons';
+import { Layout as ALayout, MenuProps, theme } from 'antd';
+import { FC, createElement } from 'react';
+import { useTranslation } from 'react-i18next';
 const { Footer } = ALayout;
 
-const items: MenuProps["items"] = [
+const items: MenuProps['items'] = [
   UserOutlined,
   VideoCameraOutlined,
   UploadOutlined,
@@ -34,8 +34,8 @@ export const LayoutFooter: FC = () => {
   } = theme.useToken();
   const { t } = useTranslation();
   return (
-    <Footer style={{ textAlign: "center" }}>
-      {t("©2023 Created by GMM7")}
+    <Footer style={{ textAlign: 'center' }}>
+      {t('©2023 Created by GMM7')}
     </Footer>
   );
 };

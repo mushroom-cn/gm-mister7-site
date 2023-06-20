@@ -1,8 +1,8 @@
-import { ActorDto, api } from "@plugins/VideoList/api";
-import { useCallback } from "react";
-import { useSetState } from "react-use";
-import { v4 as uuidv4 } from "uuid";
-import { BaseSelect } from "./BaseSelect";
+import { ActorDto, api } from '@plugins/VideoList/api';
+import { useCallback } from 'react';
+import { useSetState } from 'react-use';
+import { v4 as uuidv4 } from 'uuid';
+import { BaseSelect } from './BaseSelect';
 type ActorSelectProps = {
   value: string;
   onChange: (v: ActorDto) => void;

@@ -1,4 +1,4 @@
-import { useMediaQuery } from "react-responsive";
+import { useMediaQuery } from 'react-responsive';
 
 export function useIsDevice_2560_1440() {
   return useMediaQuery({

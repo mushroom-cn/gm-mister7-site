@@ -14,7 +14,8 @@
     },
     "editor.codeActionsOnSave": {
         "source.fixAll": false,
-        "source.fixAll.eslint": true
+        "source.fixAll.eslint": true, 
+        "source.fixAll.stylelint": true
     },
     "editor.renderWhitespace": "all",
     "files.associations": {
@@ -22,16 +23,19 @@
     },
     "eslint.packageManager": "yarn",
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-    "[javascript]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
-    },
-    "[jsonc]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
-    },
     "[scss]": {
-        "editor.defaultFormatter": "vscode.css-language-features"
+        "editor.defaultFormatter": "stylelint.vscode-stylelint"
     },
-    "[json]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
+    "[css]": {
+        "editor.defaultFormatter": "stylelint.vscode-stylelint"
     },
-}
+    "stylelint.enable": true,
+    "scss.validate": false,
+    "css.validate": false,
+    "less.validate": false,
+    "stylelint.validate": [
+        "css",
+        "less",
+        "postcss",
+        "scss"
+    ],}

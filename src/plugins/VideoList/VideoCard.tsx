@@ -1,12 +1,12 @@
-import { EllipsisOutlined, StarOutlined } from "@ant-design/icons";
-import { EventBusContext } from "@common/global";
-import { Card, Tag, Tooltip } from "antd";
-import Meta from "antd/es/card/Meta";
-import { useContext } from "react";
-import { useTranslation } from "react-i18next";
-import { IMedia } from "./api";
-import { DeleteVideoButton, EditVideoButton, PreviewVideo } from "./components";
-import styles from "./styles/index.scss";
+import { EllipsisOutlined, StarOutlined } from '@ant-design/icons';
+import { EventBusContext } from '@common/global';
+import { Card, Tag, Tooltip } from 'antd';
+import Meta from 'antd/es/card/Meta';
+import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
+import { IMedia } from './api';
+import { DeleteVideoButton, EditVideoButton, PreviewVideo } from './components';
+import styles from './styles/index.scss';
 type VideoCardProps = {
   video: IMedia;
 };
@@ -16,25 +16,25 @@ export function VideoCard({ video }: VideoCardProps) {
   return (
     <Card
       hoverable
-      className={styles["video-card"]}
+      className={styles['video-card']}
       cover={<PreviewVideo coverSrc={video.coverSrc} videoSrc={video.src} />}
       actions={[
         <EditVideoButton
           key="edit"
           video={video}
-          onOk={() => eventBus.emit("refresh")}
+          onOk={() => eventBus.emit('refresh')}
         />,
-        <Tooltip key="star" title={t("收藏")}>
+        <Tooltip key="star" title={t('收藏')}>
           <StarOutlined />
         </Tooltip>,
         <DeleteVideoButton
           key="delete"
           id={video.id}
           name={video.name}
-          onOk={() => eventBus.emit("refresh")}
+          onOk={() => eventBus.emit('refresh')}
           src={video.src}
         />,
-        <Tooltip key="ellipsis" title={t("更多")}>
+        <Tooltip key="ellipsis" title={t('更多')}>
           <EllipsisOutlined />
         </Tooltip>,
       ]}

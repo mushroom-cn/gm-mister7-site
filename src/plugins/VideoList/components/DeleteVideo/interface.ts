@@ -1,3 +1,3 @@
-export type IDeleteVideoForm = {
+export type ideletevideoform = {
   id: number;
 };

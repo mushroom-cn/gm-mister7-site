@@ -1,10 +1,10 @@
-import { LocaleLang } from "@common";
-import { message } from "antd";
-import { assign } from "lodash";
-import { Api, ApiConfig } from "./__generated__/api";
-export * from "./__generated__/api";
-export * from "./format";
-export * from "./interface";
+import { LocaleLang } from '@common';
+import { message } from 'antd';
+import { assign } from 'lodash';
+import { Api, ApiConfig } from './__generated__/api';
+export * from './__generated__/api';
+export * from './format';
+export * from './interface';
 export { api, refreshApiConfig };
 
 const refreshApiConfigCore = <T>(apiConfig?: ApiConfig<T>) => {

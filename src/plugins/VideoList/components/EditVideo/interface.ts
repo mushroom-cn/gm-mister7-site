@@ -1,4 +1,4 @@
-export type IEditVideoForm = {
+export type ieditvideoform = {
   id: number;
   name: string;
 };

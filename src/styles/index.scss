@@ -1,10 +1,11 @@
 @import 'antd/dist/reset.css';
 @import 'video.js/dist/video-js.css';
-@import "../device/styles/index.scss";
+@import "../device/styles/index";
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -16,10 +17,12 @@ code {
 }
 
 @each $device in ($_desktop, $_tablet, $_note, $_mobile) {
-    ._#{$device} {
-        @import "./App.css";
-    }
+  ._#{$device} {
+    /* stylelint-disable-next-line no-invalid-position-at-import-rule */
+    @import "./App.css";
+  }
 }
+
 #root {
-    height: 100%;
+  height: 100%;
 }

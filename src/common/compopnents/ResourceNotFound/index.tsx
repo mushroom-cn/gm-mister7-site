@@ -1,7 +1,7 @@
-import { Button, Result } from "antd";
-import { useTranslation } from "react-i18next";
-import { useSetState } from "react-use";
-import { interval, take, timer } from "rxjs";
+import { Button, Result } from 'antd';
+import { useTranslation } from 'react-i18next';
+import { useSetState } from 'react-use';
+import { interval, take, timer } from 'rxjs';
 type ResourceNotFoundProps = {
   title: React.ReactNode;
   retry: VoidFunction;
@@ -20,7 +20,7 @@ export function ResourceNotFound({ title, retry }: ResourceNotFoundProps) {
     <Result
       status="404"
       title={title}
-      style={{ height: "100%" }}
+      style={{ height: '100%' }}
       extra={
         <Button
           type="primary"

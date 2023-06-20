@@ -1,1 +1,1 @@
-export * from "./EditTag";
+export * from './EditTag';

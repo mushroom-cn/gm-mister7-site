@@ -1,12 +1,12 @@
-import React, { createContext, useContext } from "react";
-import { useMediaQuery } from "react-responsive";
-import device from "./styles/index.scss";
+import React, { createContext, useContext } from 'react';
+import { useMediaQuery } from 'react-responsive';
+import device from './styles/index.scss';
 
 export const DeviceSize = {
-  DESKTOP: device["desktop"],
-  TABLET: device["tablet"],
-  NOTE: device["note"],
-  MOBILE: device["mobile"],
+  DESKTOP: device['desktop'],
+  TABLET: device['tablet'],
+  NOTE: device['note'],
+  MOBILE: device['mobile'],
 };
 
 export type DeviceType = keyof typeof DeviceSize;

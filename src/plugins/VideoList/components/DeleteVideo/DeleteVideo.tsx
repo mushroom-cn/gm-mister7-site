@@ -1,12 +1,12 @@
-import { DeleteOutlined } from "@ant-design/icons";
-import { Form, Modal, Spin, Tooltip } from "antd";
-import { createPortal } from "react-dom";
-import { useTranslation } from "react-i18next";
-import { useSetState } from "react-use";
-import { useCallback } from "react";
-import { Controller, useForm } from "react-hook-form";
-import { IDeleteVideoForm } from "./interface";
-import { api } from "@plugins/VideoList/api";
+import { DeleteOutlined } from '@ant-design/icons';
+import { Form, Modal, Spin, Tooltip } from 'antd';
+import { createPortal } from 'react-dom';
+import { useTranslation } from 'react-i18next';
+import { useSetState } from 'react-use';
+import { useCallback } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import { IDeleteVideoForm } from './interface';
+import { api } from '@plugins/VideoList/api';
 type DeleteVideoProps = {
   id: number;
   name: string;
@@ -32,7 +32,7 @@ export function DeleteVideo({
     loading: false,
   });
   const { control, handleSubmit, trigger } = useForm<IDeleteVideoForm>({
-    mode: "onChange",
+    mode: 'onChange',
   });
   const { t } = useTranslation();
   const onOkFunc = useCallback(async () => {
@@ -54,12 +54,12 @@ export function DeleteVideo({
 
   return (
     <Modal
-      title={t("删除")}
+      title={t('删除')}
       onOk={onOkFunc}
       onCancel={onClose}
       open={visible}
-      okText={<>{loading ? <Spin size="small" /> : t("确定")}</>}
-      cancelText={t("取消")}
+      okText={<>{loading ? <Spin size="small" /> : t('确定')}</>}
+      cancelText={t('取消')}
     >
       <Form labelAlign="right">
         <Controller
@@ -70,7 +70,7 @@ export function DeleteVideo({
             required: true,
             validate: (v) => {
               if (!v) {
-                return t("ID不可为空");
+                return t('ID不可为空');
               }
             },
           }}
@@ -80,7 +80,7 @@ export function DeleteVideo({
                 {...formItemLayout}
                 label="ID"
                 required
-                status={error?.message ? "error" : null}
+                status={error?.message ? 'error' : null}
               >
                 <Tooltip title={id}>{id}</Tooltip>
               </Form.Item>
@@ -95,7 +95,7 @@ export function DeleteVideo({
   );
 }
 
-type DeleteVideoButtonProps = Omit<DeleteVideoProps, "visible">;
+type DeleteVideoButtonProps = Omit<DeleteVideoProps, 'visible'>;
 export function DeleteVideoButton({
   onClose,
   onOk,
@@ -117,7 +117,7 @@ export function DeleteVideoButton({
   };
   return (
     <>
-      <Tooltip key="delete" title={t("删除")}>
+      <Tooltip key="delete" title={t('删除')}>
         <DeleteOutlined
           key="delete"
           onClick={(e) => {

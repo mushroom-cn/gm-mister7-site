@@ -1,6 +1,6 @@
-import * as i18n from "i18next";
-import detector from "i18next-browser-languagedetector";
-import { initReactI18next } from "react-i18next";
+import * as i18n from 'i18next';
+import detector from 'i18next-browser-languagedetector';
+import { initReactI18next } from 'react-i18next';
 
 i18n
   .use(detector)
@@ -12,13 +12,13 @@ i18n
     resources: {
       en: {
         translation: {
-          "Welcome to React": "Welcome to React and react-i18next",
+          'Welcome to React': 'Welcome to React and react-i18next',
         },
       },
     },
     debug: true,
-    lng: "zh", // if you're using a language detector, do not define the lng option
-    fallbackLng: "en",
+    lng: 'zh', // if you're using a language detector, do not define the lng option
+    fallbackLng: 'en',
     interpolation: {
       escapeValue: false, // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
     },

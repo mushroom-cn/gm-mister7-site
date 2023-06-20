@@ -9,6 +9,45 @@
  * ---------------------------------------------------------------
  */
 
+export interface SettingDto {
+  id: number;
+  /**
+   * @minLength 1
+   * @maxLength 255
+   * @default ""
+   */
+  name: string;
+  /**
+   * @minLength 1
+   * @maxLength 255
+   * @default ""
+   */
+  description?: string | null;
+  /** @format YYYY-MM-DDTHH:mm:ss.sssZ */
+  createDate: string;
+  /** @format YYYY-MM-DDTHH:mm:ss.sssZ */
+  modifyDate: string;
+  /** @format YYYY-MM-DDTHH:mm:ss.sssZ */
+  deleteDate: string | null;
+  /**
+   * @minLength 1
+   * @maxLength 10
+   * @uniqueItems true
+   */
+  resourceId: string;
+  data: string | null;
+}
+
+export interface Gm7Error {
+  code: string;
+  message: string;
+}
+
+export interface BaseResult {
+  error?: Gm7Error;
+  status: number;
+}
+
 export interface TagDto {
   id: number;
   /**
@@ -62,15 +101,21 @@ export interface MediaDto {
    * @default ""
    */
   name: string;
-  /** @minLength 1 */
-  path: string;
-  target: string;
   /**
    * @minLength 1
    * @maxLength 255
    * @default ""
    */
   description?: string | null;
+  /** @format YYYY-MM-DDTHH:mm:ss.sssZ */
+  createDate: string;
+  /** @format YYYY-MM-DDTHH:mm:ss.sssZ */
+  modifyDate: string;
+  /** @format YYYY-MM-DDTHH:mm:ss.sssZ */
+  deleteDate: string | null;
+  /** @minLength 1 */
+  path: string;
+  target: string;
   /**
    * @minLength 1
    * @maxLength 255
@@ -78,25 +123,9 @@ export interface MediaDto {
   mediaType: string;
   /** @default 0 */
   size: number;
-  /** @format YYYY-MM-DDTHH:mm:ss.sssZ */
-  createDate: string;
-  /** @format YYYY-MM-DDTHH:mm:ss.sssZ */
-  modifyDate: string;
-  /** @format YYYY-MM-DDTHH:mm:ss.sssZ */
-  deleteDate: string | null;
   status: "loading" | "done";
   actors?: ActorDto[];
   tags?: TagDto[];
-}
-
-export interface Gm7Error {
-  code: string;
-  message: string;
-}
-
-export interface BaseResult {
-  error?: Gm7Error;
-  status: number;
 }
 
 export interface DataResult {
@@ -250,8 +279,316 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * No description
      *
      * @tags settings
+     * @name Create
+     * @request POST:/settings
+     */
+    create: (data: SettingDto, params: RequestParams = {}) =>
+      this.request<
+        BaseResult & {
+          data?: SettingDto[];
+        } & {
+          totalCount?: number;
+        },
+        | (BaseResult & {
+            /** @default 400 */
+            status?: number;
+          })
+        | BaseResult
+        | (BaseResult & {
+            /** @default 403 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 404 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 405 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 408 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 413 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 429 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 500 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 501 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 502 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 503 */
+            status?: number;
+          })
+      >({
+        path: `/settings`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags settings
+     * @name Update
+     * @request PUT:/settings
+     */
+    update: (data: SettingDto, params: RequestParams = {}) =>
+      this.request<
+        BaseResult & {
+          data?: SettingDto[];
+        } & {
+          totalCount?: number;
+        },
+        | (BaseResult & {
+            /** @default 400 */
+            status?: number;
+          })
+        | BaseResult
+        | (BaseResult & {
+            /** @default 403 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 404 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 405 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 408 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 413 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 429 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 500 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 501 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 502 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 503 */
+            status?: number;
+          })
+      >({
+        path: `/settings`,
+        method: "PUT",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags settings
+     * @name Delete
+     * @request DELETE:/settings
+     */
+    delete: (
+      query: {
+        id: number[];
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<
+        DataResult & {
+          data?: SettingDto[];
+        },
+        any
+      >({
+        path: `/settings`,
+        method: "DELETE",
+        query: query,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags settings
+     * @name Query
+     * @request GET:/settings
+     */
+    query: (
+      query: {
+        id: string;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<
+        BaseResult & {
+          data?: SettingDto[];
+        } & {
+          totalCount?: number;
+        },
+        | (BaseResult & {
+            /** @default 400 */
+            status?: number;
+          })
+        | BaseResult
+        | (BaseResult & {
+            /** @default 403 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 404 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 405 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 408 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 413 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 429 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 500 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 501 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 502 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 503 */
+            status?: number;
+          })
+      >({
+        path: `/settings`,
+        method: "GET",
+        query: query,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags settings
+     * @name List
+     * @request GET:/settings/list
+     */
+    list: (
+      query?: {
+        page?: number;
+        pageSize?: number;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<
+        BaseResult & {
+          data?: SettingDto[];
+        } & {
+          totalCount?: number;
+        },
+        | (BaseResult & {
+            /** @default 400 */
+            status?: number;
+          })
+        | BaseResult
+        | (BaseResult & {
+            /** @default 403 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 404 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 405 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 408 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 413 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 429 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 500 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 501 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 502 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 503 */
+            status?: number;
+          })
+      >({
+        path: `/settings/list`,
+        method: "GET",
+        query: query,
+        format: "json",
+        ...params,
+      }),
+  };
+  lang = {
+    /**
+     * No description
+     *
+     * @tags lang
      * @name ChangeLang
-     * @request PUT:/settings/change/lang
+     * @request PUT:/lang/change/lang
      */
     changeLang: (
       query: {
@@ -260,7 +597,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       params: RequestParams = {},
     ) =>
       this.request<void, any>({
-        path: `/settings/change/lang`,
+        path: `/lang/change/lang`,
         method: "PUT",
         query: query,
         ...params,

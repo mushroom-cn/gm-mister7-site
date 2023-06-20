@@ -1,8 +1,8 @@
-import { Spin } from "antd";
-import { useSetState } from "react-use";
-import { VideoJS } from "./VideoJs";
-import styles from "./styles/index.scss";
-import classNames from "classnames";
+import { Spin } from 'antd';
+import { useSetState } from 'react-use';
+import { VideoJS } from './VideoJs';
+import styles from './styles/index.scss';
+import classNames from 'classnames';
 
 type PreviewVideoProps = {
   width?: number;
@@ -29,10 +29,10 @@ export function PreviewVideo({
     mode: PreviewMode.Img,
   });
   return (
-    <div className={styles["video-preview-img"]}>
+    <div className={styles['video-preview-img']}>
       {mode === PreviewMode.Img ? (
         <div
-          className={classNames(styles["cover-img"])}
+          className={classNames(styles['cover-img'])}
           style={{ backgroundImage: `url(${coverSrc})` }}
           onClick={() => {
             setState({ mode: PreviewMode.Video });
@@ -43,12 +43,12 @@ export function PreviewVideo({
           options={{
             src: videoSrc,
             fluid: true,
-            preload: "auto",
+            preload: 'auto',
             autoplay: true,
             controls: true,
             width,
             height,
-            type: "application/x-mpegURL",
+            type: 'application/x-mpegURL',
           }}
           onReady={() => {
             setState({

@@ -1,5 +1,5 @@
-import React from "react";
-import { BehaviorSubject, Observable, distinctUntilChanged } from "rxjs";
+import React from 'react';
+import { BehaviorSubject, Observable, distinctUntilChanged } from 'rxjs';
 const routers$ = new BehaviorSubject<IEntryRouter[]>([]);
 export const entryRouter$: Observable<IEntryRouter[]> = routers$.pipe(
   distinctUntilChanged()

@@ -1,12 +1,12 @@
-import { EventBusContext } from "@common/global";
-import EventEmitter from "events";
-import { memo, useMemo } from "react";
-import { BrowserRouter, Routes } from "react-router-dom";
-import { Layout } from "./Layout";
-import "./common";
-import "./i18n";
-import "./plugins";
-import "./styles/App.css";
+import { EventBusContext } from '@common/global';
+import EventEmitter from 'events';
+import { memo, useMemo } from 'react';
+import { BrowserRouter, Routes } from 'react-router-dom';
+import { Layout } from './Layout';
+import './common';
+import './i18n';
+import './plugins';
+import './styles/App.css';
 
 const App = memo(() => {
   const eventBus = useMemo(() => new EventEmitter(), []);
@@ -18,5 +18,5 @@ const App = memo(() => {
     </BrowserRouter>
   );
 });
-App.displayName = "App";
+App.displayName = 'App';
 export default App;

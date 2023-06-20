@@ -1,5 +1,5 @@
-import { MediaDto } from "../__generated__/api";
-import { IMedia } from "../interface";
+import { MediaDto } from '../__generated__/api';
+import { IMedia } from '../interface';
 
 function getCacheBasePath() {
   return `${SERVER_URL}/cache/`;

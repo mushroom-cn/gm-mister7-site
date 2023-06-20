@@ -1,1 +1,1 @@
-class VideoPage {}
+class videopage {}

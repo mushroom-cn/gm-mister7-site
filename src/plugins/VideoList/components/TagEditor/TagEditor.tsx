@@ -1,9 +1,9 @@
-import { Input, InputRef, Tag, Tooltip, theme } from "antd";
-import { useSetState } from "react-use";
-import { PlusOutlined } from "@ant-design/icons";
-import { useTranslation } from "react-i18next";
-import { useEffect, useRef } from "react";
-import { ActorSelect } from "../Select/ActorSelect";
+import { Input, InputRef, Tag, Tooltip, theme } from 'antd';
+import { useSetState } from 'react-use';
+import { PlusOutlined } from '@ant-design/icons';
+import { useTranslation } from 'react-i18next';
+import { useEffect, useRef } from 'react';
+import { ActorSelect } from '../Select/ActorSelect';
 type TagEditorProps = {
   tags: { text: string; value: string }[];
   onChange?: (tags: { text: string; value: string }[]) => void;
@@ -64,15 +64,15 @@ export function TagEditor({
             }}
           />
         ) : (
-          <Tooltip title={t("添加")}>
+          <Tooltip title={t('添加')}>
             <Tag
               onClick={() => setState({ inputVisible: true })}
               style={{
                 background: token.colorBgContainer,
-                borderStyle: "dashed",
+                borderStyle: 'dashed',
               }}
             >
-              <PlusOutlined /> {t("添加")}
+              <PlusOutlined /> {t('添加')}
             </Tag>
           </Tooltip>
         ))}

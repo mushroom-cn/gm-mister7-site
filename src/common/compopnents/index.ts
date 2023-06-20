@@ -1,1 +1,1 @@
-export * from "./ResourceNotFound";
+export * from './ResourceNotFound';

@@ -1,10 +1,10 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import "./styles/index.scss";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import './styles/index.scss';
 
-const root = createRoot(document.getElementById("root") as HTMLElement);
+const root = createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   // StrictMode cause render twice, but working well on production
   <StrictMode>

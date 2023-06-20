@@ -15,6 +15,6 @@ export type ITag = {
   content: string;
 };
 export const routerPath = {
-  video: "/video",
-  settings: "/video/settings",
+  video: '/video',
+  settings: '/video/settings',
 };

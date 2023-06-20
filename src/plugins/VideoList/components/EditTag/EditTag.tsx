@@ -1,5 +1,5 @@
-import { ITag } from "../../interface";
-import { Card, Tag } from "antd";
+import { ITag } from '../../interface';
+import { Card, Tag } from 'antd';
 
 type EditTagProps = {
   tags: ITag[];
