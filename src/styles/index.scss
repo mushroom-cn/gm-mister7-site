@@ -16,7 +16,7 @@ code {
     monospace;
 }
 
-@each $device in ($_desktop, $_tablet, $_note, $_mobile) {
+@each $device in ($desktop, $tablet, $note, $mobile) {
   ._#{$device} {
     /* stylelint-disable-next-line no-invalid-position-at-import-rule */
     @import "./App.css";

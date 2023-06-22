@@ -1,3 +1,5 @@
+import { ISetting, SettingDto } from './api';
+
 export type IVideo = {
   id: number;
   coverSrc: string;
@@ -14,7 +16,21 @@ export type ITag = {
   type: string;
   content: string;
 };
+
 export const routerPath = {
   video: '/video',
-  settings: '/video/settings',
+  settings: '/video/settings/:action?',
+};
+export const routerActionPath = {
+  settings_index: '/video/settings',
+  settings_edit: '/video/settings/edit',
+  settings_create: '/video/settings/create',
+};
+
+export const RESOURCE_ID = 'media_setting';
+
+export type ISettingForm = {
+  source: string;
+  target: string;
+  ext: { id: string }[];
 };

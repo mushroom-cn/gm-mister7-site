@@ -1,13 +1,15 @@
-import { Button, Result } from 'antd';
+import { Button, Result, Typography } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useSetState } from 'react-use';
-import { interval, take, timer } from 'rxjs';
+import { interval, take } from 'rxjs';
+const { Paragraph, Text } = Typography;
 type ResourceNotFoundProps = {
   title: React.ReactNode;
+  content?: React.ReactNode;
   retry: VoidFunction;
 };
 const WAIT = 5;
-export function ResourceNotFound({ title, retry }: ResourceNotFoundProps) {
+export function Error_500({ title, retry, content }: ResourceNotFoundProps) {
   const [{ canRetry, time }, setState] = useSetState<{
     canRetry: boolean;
     time: number;
@@ -18,7 +20,7 @@ export function ResourceNotFound({ title, retry }: ResourceNotFoundProps) {
   const { t } = useTranslation();
   return (
     <Result
-      status="404"
+      status="500"
       title={title}
       style={{ height: '100%' }}
       extra={
@@ -44,6 +46,15 @@ export function ResourceNotFound({ title, retry }: ResourceNotFoundProps) {
           {canRetry ? t(`请重试`) : t(`${time}秒后请重试`)}
         </Button>
       }
-    ></Result>
+    >
+      <Text
+        strong
+        style={{
+          fontSize: 16,
+        }}
+      >
+        {content}
+      </Text>
+    </Result>
   );
 }

@@ -4,3 +4,7 @@ export enum LocaleLang {
 }
 
 export const BASE_URL = SERVER_URL;
+export const DEFAULT_FORM_ITEM_LAYOUT = {
+  labelCol: { span: 4 },
+  wrapperCol: { span: 16 },
+};
