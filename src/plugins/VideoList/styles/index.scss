@@ -6,3 +6,19 @@
   justify-content: center;
   align-items: center;
 }
+
+.video-list-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .video-card-item {
+    margin: 10px auto 10px 10px;
+    flex:0 1 auto;
+  }
+
+  .load-more{
+    width: 100%;
+    text-align: center;
+  }
+}

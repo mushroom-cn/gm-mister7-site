@@ -123,7 +123,7 @@ export interface MediaDto {
   mediaType: string;
   /** @default 0 */
   size: number;
-  status: "loading" | "done";
+  status: string;
   actors?: ActorDto[];
   tags?: TagDto[];
 }
@@ -415,12 +415,13 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * No description
      *
      * @tags settings
-     * @name Delete
+     * @name SoftDelete
      * @request DELETE:/settings
      */
-    delete: (
+    softDelete: (
       query: {
         id: number[];
+        force?: boolean;
       },
       params: RequestParams = {},
     ) =>
@@ -441,10 +442,10 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * No description
      *
      * @tags settings
-     * @name Query
+     * @name Get
      * @request GET:/settings
      */
-    query: (
+    get: (
       query: {
         id: string;
       },
@@ -504,6 +505,78 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       >({
         path: `/settings`,
         method: "GET",
+        query: query,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags settings
+     * @name Restore
+     * @request PUT:/settings/restore
+     */
+    restore: (
+      query: {
+        id: number;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<
+        BaseResult & {
+          data?: SettingDto[];
+        } & {
+          totalCount?: number;
+        },
+        | (BaseResult & {
+            /** @default 400 */
+            status?: number;
+          })
+        | BaseResult
+        | (BaseResult & {
+            /** @default 403 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 404 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 405 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 408 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 413 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 429 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 500 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 501 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 502 */
+            status?: number;
+          })
+        | (BaseResult & {
+            /** @default 503 */
+            status?: number;
+          })
+      >({
+        path: `/settings/restore`,
+        method: "PUT",
         query: query,
         format: "json",
         ...params,
@@ -822,6 +895,27 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     delete: (
       query: {
         ids: number;
+        force?: boolean;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<void, any>({
+        path: `/media`,
+        method: "DELETE",
+        query: query,
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags media
+     * @name Restore
+     * @request PUT:/media/restore
+     */
+    restore: (
+      query: {
+        ids: number;
       },
       params: RequestParams = {},
     ) =>
@@ -877,8 +971,8 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
             status?: number;
           })
       >({
-        path: `/media`,
-        method: "DELETE",
+        path: `/media/restore`,
+        method: "PUT",
         query: query,
         format: "json",
         ...params,
@@ -1149,6 +1243,27 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * No description
      *
      * @tags tag
+     * @name Delete
+     * @request DELETE:/tag
+     */
+    delete: (
+      query: {
+        id: number;
+        force?: boolean;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<void, any>({
+        path: `/tag`,
+        method: "DELETE",
+        query: query,
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags tag
      * @name Update
      * @request PUT:/tag/{id}
      */
@@ -1158,27 +1273,6 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
         method: "PUT",
         body: data,
         type: ContentType.Json,
-        ...params,
-      }),
-
-    /**
-     * No description
-     *
-     * @tags tag
-     * @name Delete
-     * @request DELETE:/tag/{id}
-     */
-    delete: (
-      id: string,
-      query: {
-        id: number;
-      },
-      params: RequestParams = {},
-    ) =>
-      this.request<void, any>({
-        path: `/tag/${id}`,
-        method: "DELETE",
-        query: query,
         ...params,
       }),
 
@@ -1266,6 +1360,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     delete: (
       query: {
         ids: number[];
+        force?: boolean;
       },
       params: RequestParams = {},
     ) =>

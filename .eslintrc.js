@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ["plugin:react/recommended", "plugin:react/jsx-runtime", "plugin:prettier/recommended"],
+  extends: ["plugin:react/recommended", "plugin:react/jsx-runtime",  "plugin:react-hooks/recommended", "plugin:prettier/recommended"],
   overrides: [],
   parser: "@typescript-eslint/parser",
   parserOptions: {

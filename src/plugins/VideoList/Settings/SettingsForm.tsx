@@ -102,7 +102,7 @@ export function SettingsForm({
           );
         }}
       />
-      <Controller
+      {/* <Controller
         control={control}
         name="data.target"
         rules={{
@@ -125,7 +125,7 @@ export function SettingsForm({
             </FormItem>
           );
         }}
-      />
+      /> */}
       {fields.map((v, index) => {
         return (
           <Controller

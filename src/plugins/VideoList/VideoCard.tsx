@@ -7,16 +7,18 @@ import { useTranslation } from 'react-i18next';
 import { IMedia } from './api';
 import { DeleteVideoButton, EditVideoButton, PreviewVideo } from './components';
 import styles from './styles/index.scss';
+import classNames from 'classnames';
 type VideoCardProps = {
   video: IMedia;
+  className?: string;
 };
-export function VideoCard({ video }: VideoCardProps) {
+export function VideoCard({ video, className }: VideoCardProps) {
   const { t } = useTranslation();
   const eventBus = useContext(EventBusContext);
   return (
     <Card
       hoverable
-      className={styles['video-card']}
+      className={classNames(styles['video-card'], className)}
       cover={<PreviewVideo coverSrc={video.coverSrc} videoSrc={video.src} />}
       actions={[
         <EditVideoButton

@@ -20,7 +20,7 @@ export function Setting() {
   const { t } = useTranslation();
   useTitle(t('设置'));
   const { value, loading, error, retry } = useAsyncRetry(async () => {
-    const { data } = await api().settings.query({ id: RESOURCE_ID });
+    const { data } = await api().settings.get({ id: RESOURCE_ID });
     return formatSettings<ISettingForm>(data.data);
   });
   const navigate = useNavigate();
