@@ -38,4 +38,6 @@
         "less",
         "postcss",
         "scss"
-    ],}
+    ],
+    "files.eol": "\n"
+}

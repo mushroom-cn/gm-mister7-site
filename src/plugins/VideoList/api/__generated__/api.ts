@@ -1055,12 +1055,34 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * No description
      *
      * @tags media
-     * @name Reindex
-     * @request GET:/media/reindex
+     * @name Rescann
+     * @request GET:/media/rescann
      */
-    reindex: (params: RequestParams = {}) =>
+    rescann: (
+      query: {
+        id: number;
+        time?: string;
+      },
+      params: RequestParams = {},
+    ) =>
       this.request<any[], any>({
-        path: `/media/reindex`,
+        path: `/media/rescann`,
+        method: "GET",
+        query: query,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags media
+     * @name Scann
+     * @request GET:/media/scann
+     */
+    scann: (params: RequestParams = {}) =>
+      this.request<any[], any>({
+        path: `/media/scann`,
         method: "GET",
         format: "json",
         ...params,
