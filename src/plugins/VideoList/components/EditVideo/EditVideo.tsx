@@ -22,7 +22,7 @@ const formItemLayout = {
 };
 export function EditVideo({ video, visible, onOk, onClose }: EditVideoProps) {
   const { t } = useTranslation();
-  const { control, handleSubmit } = useForm<MediaDto>({
+  const { control, handleSubmit } = useForm<MediaDto, undefined, MediaDto>({
     mode: 'all',
     defaultValues: video,
   });
@@ -122,9 +122,7 @@ export function EditVideo({ video, visible, onOk, onClose }: EditVideoProps) {
               <Form.Item {...formItemLayout} label={t('标签')}>
                 <TagEditor
                   tags={value.map((v) => ({ text: v.name, value: `${v.id}` }))}
-                  onChange={(tag) => {
-                    onChange();
-                  }}
+                  onChange={(tag) => {}}
                 />
 
                 <TagSelect

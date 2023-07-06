@@ -11,6 +11,7 @@
     "events": "^3.3.0",
     "i18next": "^22.5.0",
     "i18next-browser-languagedetector": "^7.0.2",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-custom-scrollbars-2": "^4.5.0",
     "react-dom": "^18.2.0",
@@ -62,6 +63,7 @@
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
+    "@types/lodash": "^4.14.195",
     "@types/node": "^16.18.23",
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
@@ -71,7 +73,6 @@
     "@webpack-cli/generators": "^3.0.1",
     "autoprefixer": "^10.4.14",
     "commitizen": "^4.3.0",
-    "conventional-changelog-cli": "^3.0.0",
     "css-loader": "^6.7.3",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.0.1",
@@ -114,5 +115,10 @@
   "lint-staged": {
     "src/**/*.{ts,tsx}": "eslint -c .eslintrc.js  --fix",
     "src/**/*.{html,css,sass,scss,less}": "stylelint --config stylelint.config.js --fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }

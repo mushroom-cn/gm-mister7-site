@@ -89,7 +89,7 @@ export const VideoList: React.FC = () => {
           <FileSyncOutlined
             style={{ marginLeft: 16 }}
             onClick={() => {
-              api().media.reindex();
+              api().media.scann();
             }}
           />
         </Tooltip>
@@ -117,18 +117,15 @@ export const VideoList: React.FC = () => {
             >
               <Scrollbars autoHide hideTracksWhenNotNeeded>
                 <div className={styles['video-list-wrapper']}>
-                  {Array(50)
-                    .fill(1)
-                    .map((v, index) => ({ ...latestData.data[0], id: index }))
-                    .map((v) => {
-                      return (
-                        <VideoCard
-                          key={v.id}
-                          video={v}
-                          className="video-card-item"
-                        />
-                      );
-                    })}
+                  {(latestData?.data || []).map((v) => {
+                    return (
+                      <VideoCard
+                        key={v.id}
+                        video={v}
+                        className="video-card-item"
+                      />
+                    );
+                  })}
                   <div className={styles['load-more']}>
                     {loading ? (
                       <Spin />

@@ -31,7 +31,11 @@ export function DeleteVideo({
   }>({
     loading: false,
   });
-  const { control, handleSubmit, trigger } = useForm<IDeleteVideoForm>({
+  const { control, handleSubmit, trigger } = useForm<
+    IDeleteVideoForm,
+    undefined,
+    IDeleteVideoForm
+  >({
     mode: 'onChange',
   });
   const { t } = useTranslation();

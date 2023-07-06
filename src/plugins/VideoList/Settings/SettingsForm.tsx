@@ -31,7 +31,7 @@ export function SettingsForm({
     handleSubmit,
     trigger,
     formState: { isValid, isDirty },
-  } = useForm<ISetting<ISettingForm>>({
+  } = useForm<ISetting<ISettingForm>, undefined, ISetting<ISettingForm>>({
     mode: 'all',
     defaultValues: {
       data: {
