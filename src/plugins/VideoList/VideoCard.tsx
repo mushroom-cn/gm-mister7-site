@@ -30,6 +30,15 @@ export function VideoCard({ video, className }: VideoCardProps) {
             onClick={() => api().media.rescann({ id: video.id })}
           />
         </Tooltip>,
+        <Tooltip key="delete" title={t('删除')}>
+          <DeleteVideoButton
+            key="delete"
+            id={video.id}
+            name={video.name}
+            onOk={() => eventBus.emit('refresh')}
+            src={video.src}
+          />
+        </Tooltip>,
         <Tooltip key="star" title={t('收藏')}>
           <StarOutlined />
         </Tooltip>,
@@ -47,19 +56,6 @@ export function VideoCard({ video, className }: VideoCardProps) {
                     />
                   ),
                   label: t('编辑'),
-                },
-                {
-                  key: 'delete',
-                  icon: (
-                    <DeleteVideoButton
-                      key="delete"
-                      id={video.id}
-                      name={video.name}
-                      onOk={() => eventBus.emit('refresh')}
-                      src={video.src}
-                    />
-                  ),
-                  label: t('删除'),
                 },
               ],
             }}

@@ -894,7 +894,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      */
     delete: (
       query: {
-        ids: number;
+        ids: number[];
         force?: boolean;
       },
       params: RequestParams = {},

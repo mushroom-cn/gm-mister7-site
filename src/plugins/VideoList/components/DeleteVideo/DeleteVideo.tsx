@@ -47,14 +47,14 @@ export function DeleteVideo({
         return;
       }
       await handleSubmit(async ({ id }) => {
-        await api().media.delete({ ids: id });
+        await api().media.delete({ ids: [id], force: true });
       })();
       onOk();
     } catch {
     } finally {
       setState({ loading: false });
     }
-  }, [onOk]);
+  }, [handleSubmit, onOk, setState, trigger]);
 
   return (
     <Modal
