@@ -2,18 +2,20 @@ import { Layout as ALayout, theme } from 'antd';
 import { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useObservable } from 'react-use';
-import { entryRouter$ } from '../routers';
+import { entryRouter$ } from '../../routers';
 
 const { Content } = ALayout;
-
-export const LayoutContent: FC = () => {
+type LayoutContentProps = {
+  className?: string;
+};
+export const LayoutContent: FC<LayoutContentProps> = ({ className }) => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
   const routers = useObservable(entryRouter$, []);
   return (
-    <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
+    <Content className={className}>
       <div
         style={{
           padding: 24,

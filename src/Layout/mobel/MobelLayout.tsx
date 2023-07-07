@@ -1,4 +1,3 @@
-import { FC, Fragment, createElement } from 'react';
 import {
   AppstoreOutlined,
   BarChartOutlined,
@@ -9,14 +8,10 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
-import { Breadcrumb, MenuProps } from 'antd';
-import { Layout as ALayout, Menu, theme } from 'antd';
-import { LayoutHeader } from './LayoutHeader';
-import { LayoutFooter } from './LayoutFooter';
-import { LayoutContent } from './LayoutContent';
+import { Layout as ALayout, MenuProps } from 'antd';
+import { FC, createElement } from 'react';
+import { LayoutContent } from '../desktop/LayoutContent';
 import { LayoutSider } from './LayoutSider';
-
-const { Header, Content, Footer, Sider } = ALayout;
 
 const items: MenuProps['items'] = [
   UserOutlined,
@@ -33,14 +28,12 @@ const items: MenuProps['items'] = [
   label: `nav ${index + 1}`,
 }));
 
-export const Layout: FC = () => {
+export const MobelLayout: FC = () => {
   return (
-    <ALayout hasSider style={{ height: '100%' }}>
+    <ALayout style={{ height: '100%', width: '100%' }}>
       <LayoutSider />
       <ALayout className="site-layout">
-        <LayoutHeader />
         <LayoutContent />
-        <LayoutFooter />
       </ALayout>
     </ALayout>
   );

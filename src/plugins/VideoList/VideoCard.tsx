@@ -23,7 +23,13 @@ export function VideoCard({ video, className }: VideoCardProps) {
     <Card
       hoverable
       className={classNames(styles['video-card'], className)}
-      cover={<PreviewVideo coverSrc={video.coverSrc} videoSrc={video.src} />}
+      cover={
+        <PreviewVideo
+          coverSrc={video.coverSrc}
+          videoSrc={video.src}
+          height={300}
+        />
+      }
       actions={[
         <Tooltip key="reload" title={t('重新加载')}>
           <ReloadOutlined

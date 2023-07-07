@@ -1,13 +1,14 @@
 import { Layout as ALayout, Menu } from 'antd';
 import { FC, useMemo } from 'react';
-import { useObservable } from 'react-use';
-import { entryRouter$ } from '../routers';
+import { useLocalStorage, useObservable, useSetState } from 'react-use';
+import { entryRouter$ } from '../../routers';
 import { Link } from 'react-router-dom';
 
 const { Sider } = ALayout;
 
 export const LayoutSider: FC = () => {
   const routers = useObservable(entryRouter$, []);
+  const [collapsed, setState] = useLocalStorage('side-bar', false);
 
   const items = useMemo(() => {
     return routers
@@ -35,7 +36,11 @@ export const LayoutSider: FC = () => {
   }, [routers]);
 
   return (
-    <Sider style={{}}>
+    <Sider
+      collapsible
+      collapsed={collapsed}
+      onCollapse={(value) => setState(value)}
+    >
       <div
         style={{
           height: 32,

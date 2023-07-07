@@ -25,8 +25,8 @@ const config = {
     },
     devServer: {
         open: true,
-        host: "localhost",
         compress: true,
+        host: "0.0.0.0",
         historyApiFallback: true,
         devMiddleware: {
             index: true,
