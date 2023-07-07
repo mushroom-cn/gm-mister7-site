@@ -1,4 +1,8 @@
-import { FileSyncOutlined, SettingOutlined } from '@ant-design/icons';
+import {
+  FileSyncOutlined,
+  SettingOutlined,
+  ReloadOutlined,
+} from '@ant-design/icons';
 import { usePageble, useTitle } from '@common';
 import { Error_500 } from '@common/compopnents';
 import { EventBusContext } from '@common/global';
@@ -26,24 +30,26 @@ export const VideoList: React.FC = () => {
   const nav = useNavigate();
   useTitle(t('视频列表'));
 
-  const { data, loading, totalCount, error, loadMore, retry } = usePageble({
-    onFetch: async (p) => {
-      const { data } = await api().media.list(p);
-      return { data: formatMedia(data.data), totalCount: data.totalCount };
-    },
-  });
+  const { data, loading, totalCount, error, loadMore, retry, reset } =
+    usePageble({
+      onFetch: async (p) => {
+        const { data } = await api().media.list(p);
+        return { data: formatMedia(data.data), totalCount: data.totalCount };
+      },
+    });
 
   const eventBus = useContext(EventBusContext);
 
   useEffect(() => {
     const refresh = () => {
+      reset();
       retry();
     };
     eventBus.on('refresh', refresh);
     return () => {
       eventBus.off('refresh', refresh);
     };
-  }, [retry, eventBus]);
+  }, [reset, eventBus, retry]);
 
   function getDataByFilter() {
     const newData = data.filter(({ name, actors, tags }) => {
@@ -85,6 +91,15 @@ export const VideoList: React.FC = () => {
             }}
           />
         </Tooltip>
+        <Tooltip title={t('刷新')}>
+          <ReloadOutlined
+            style={{ marginLeft: 16 }}
+            onClick={() => {
+              reset();
+              retry();
+            }}
+          />
+        </Tooltip>
         <Tooltip title={t('重新扫描')}>
           <FileSyncOutlined
             style={{ marginLeft: 16 }}
@@ -104,7 +119,10 @@ export const VideoList: React.FC = () => {
           {error ? (
             <Error_500
               title={t('服务器开小差')}
-              retry={retry}
+              retry={() => {
+                reset();
+                retry();
+              }}
               content={error.message}
             />
           ) : (

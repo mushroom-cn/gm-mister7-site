@@ -48,7 +48,13 @@ export function usePageble<T>({
   }, [value]);
 
   const loadMore = () => {
-    setState({ page: page + 1 });
+    setState({
+      page: page + 1,
+    });
   };
-  return { ...state, loading, error, loadMore, retry };
+
+  const reset = () => {
+    setState({ page: 1, data: [], totalCount: 0 });
+  };
+  return { ...state, loading, error, loadMore, retry, reset };
 }
