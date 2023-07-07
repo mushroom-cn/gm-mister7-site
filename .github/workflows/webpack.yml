@@ -3,6 +3,8 @@ name: NodeJS with Webpack
 on:
   push:
     branches: [ "master" ]
+    tags: 
+      - 'v[0-9]+.[0-9]+.[0-9]+'
   pull_request:
     branches: [ "master" ]
 
@@ -38,7 +40,9 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
+      - run: rm .npmrc
+      - run: npm config delete proxy
+      - run: npm i
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
