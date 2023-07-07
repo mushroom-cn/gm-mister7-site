@@ -1,7 +1,7 @@
 {
   "name": "gm-mister7-site",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "antd": "^5.4.2",
     "axios": "^1.4.0",
